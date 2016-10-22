@@ -1,4 +1,16 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-<h1 class="text-center">Hello angular! 1 + 2 = {{1+2}} </h1>
+<div class="text-center">
+<form ng-controller="FormCtrl">
+    <select ng-model="method">
+        <option value="GET">GET</option>
+        <option value="HEAD">HEAD</option>
+    </select>
+    <div class="form-group">
+        <input type="text" class="form-control" id="urlinput" placeholder="Enter url" ng-model="url">
+    </div>
+    <button class="btn" id="fetchbtn" ng-click="MakeRequest()">Fetch</button>
+    <button class="btn" id="storebtn">Store</button>
+</form>
+</div>
