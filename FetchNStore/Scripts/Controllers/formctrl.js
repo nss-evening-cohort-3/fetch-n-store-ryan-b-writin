@@ -7,7 +7,8 @@
     var newResponse = {
         url: "",
         method: "",
-        responsetime: ""
+        code: "",
+        responseTime: ""
     };
 
     $scope.MakeRequest = () => 
@@ -23,7 +24,11 @@
             console.log(response);
             var receiveDate = (new Date()).getTime();
             var responseTimeInMs = receiveDate - sendDate;
-            $('#outputTarget').append("<br>URL: "+ $scope.url+" status: " + response.status + " response time: " + responseTimeInMs);
+            $('#outputTarget').append("<br>URL: " + $scope.url + " status: " + response.status + " response time: " + responseTimeInMs);
+            newResponse.url = $scope.url;
+            newResponse.code = response.status;
+            newResponse.method = $scope.method;
+            newResponse.responseTime = responseTimeInMs;
 
         }, function errorCallback(response) {
             console.log("error");
