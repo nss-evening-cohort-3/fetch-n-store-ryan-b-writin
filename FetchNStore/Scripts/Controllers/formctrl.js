@@ -77,7 +77,7 @@
             newResponse.sendDate = nowAsString;
 
         }, function errorCallback(response) {
-            console.log("error");
+            $("#outputTarget").html("<p>Unable to fetch response from that URL. Enter another.</p>")
         });
     }
 
