@@ -13,7 +13,7 @@ namespace FetchNStore.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201610250133282_InitialCreate"; }
+            get { return "201610250206255_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

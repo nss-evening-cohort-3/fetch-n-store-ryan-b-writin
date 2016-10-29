@@ -22,5 +22,8 @@ namespace FetchNStore.Models
 
         [Required]
         public int Code { get; set; }
+
+        [Required]
+        public DateTime SendDate { get; set; }
     }
 }

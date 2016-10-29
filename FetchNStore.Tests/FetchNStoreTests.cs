@@ -53,5 +53,109 @@ namespace FetchNStore.Tests
         {
             Assert.IsNotNull(repo);
         }
+        [TestMethod]
+        public void RepoHasContext()
+        {
+            Assert.IsNotNull(repo.Context);
+        }
+        [TestMethod]
+        public void RepoHasNoResponses()
+        {
+            ConnectMocksToDatastore();
+
+            List<Response> responses = repo.FetchAll();
+            int expected_response_count = 0;
+            int actual_response_count = responses.Count;
+
+            Assert.AreEqual(expected_response_count, actual_response_count);
+        }
+        [TestMethod]
+        public void RepoCanAddStoreResponse()
+        {
+            ConnectMocksToDatastore();
+            Response newResponse = new Response {
+                URL = "hello",
+                Method = "yes",
+                Code = 200,
+                ResponseTime = 30,
+                SendDate = new DateTime() 
+            };
+
+            repo.AddResponse(newResponse);
+
+            int actual_response_count = repo.FetchAll().Count;
+            int expected_response_count = 1;
+
+            Assert.AreEqual(expected_response_count, actual_response_count);
+        }
+        [TestMethod]
+        public void RepoCanFetchResponses()
+        {
+            responseList.Add(new Response
+            {
+                URL = "hello",
+                Method = "yes",
+                Code = 200,
+                ResponseTime = 30,
+                SendDate = new DateTime()
+            });
+            responseList.Add(new Response
+            {
+                URL = "hello",
+                Method = "yes",
+                Code = 200,
+                ResponseTime = 30,
+                SendDate = new DateTime()
+            });
+            responseList.Add(new Response
+            {
+                URL = "hello",
+                Method = "yes",
+                Code = 200,
+                ResponseTime = 30,
+                SendDate = new DateTime()
+            });
+            ConnectMocksToDatastore();
+
+            var expected_response_list = responseList; 
+            var actual_response_list = repo.FetchAll();
+
+            CollectionAssert.AreEqual(expected_response_list, actual_response_list);
+        }
+        [TestMethod]
+        public void RepoCanClearAll()
+        {
+            responseList.Add(new Response
+            {
+                URL = "hello",
+                Method = "yes",
+                Code = 200,
+                ResponseTime = 30,
+                SendDate = new DateTime()
+            });
+            responseList.Add(new Response
+            {
+                URL = "hello",
+                Method = "yes",
+                Code = 200,
+                ResponseTime = 30,
+                SendDate = new DateTime()
+            });
+            responseList.Add(new Response
+            {
+                URL = "hello",
+                Method = "yes",
+                Code = 200,
+                ResponseTime = 30,
+                SendDate = new DateTime()
+            });
+            ConnectMocksToDatastore();
+
+            repo.ClearAll();
+            int expected_response_count = 0;
+            int actual_response_count = repo.FetchAll().Count;
+
+            Assert.AreEqual(expected_response_count, actual_response_count);
+        }
     }
 }

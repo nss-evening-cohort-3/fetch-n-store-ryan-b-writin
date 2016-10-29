@@ -5,11 +5,23 @@
     $scope.method = "";
 
     var newResponse = {
-        url: "",
-        method: "",
-        code: "",
-        responseTime: ""
+        url: null,
+        method: null,
+        code: null,
+        responseTime: null,
+        sendDate: null
     };
+
+    $scope.ApiGet = () =>
+    {
+        $http.post('/api/Response', { "name": "Jurnell", "class": "E3" })
+            .success(function (response) {
+
+            })
+            .error(function (response) {
+
+            })
+    }
 
     $scope.MakeRequest = () => 
     {
@@ -24,11 +36,12 @@
             console.log(response);
             var receiveDate = (new Date()).getTime();
             var responseTimeInMs = receiveDate - sendDate;
-            $('#outputTarget').append("<br>URL: " + $scope.url + " status: " + response.status + " response time: " + responseTimeInMs);
+            $('#outputTarget').append("<br>URL: " + $scope.url + " status: " + response.status + " response time: " + responseTimeInMs + "ms");
             newResponse.url = $scope.url;
             newResponse.code = response.status;
             newResponse.method = $scope.method;
             newResponse.responseTime = responseTimeInMs;
+            newResponse.sendDate = sendDate;
 
         }, function errorCallback(response) {
             console.log("error");

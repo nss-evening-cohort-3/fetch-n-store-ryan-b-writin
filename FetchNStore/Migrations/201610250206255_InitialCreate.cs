@@ -16,6 +16,7 @@ namespace FetchNStore.Migrations
                         ResponseTime = c.Int(nullable: false),
                         Method = c.String(nullable: false),
                         Code = c.Int(nullable: false),
+                        SendDate = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.ResponseId);
             

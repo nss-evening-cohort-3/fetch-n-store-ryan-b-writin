@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FetchNStore.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,11 +8,27 @@ namespace FetchNStore.DAL
 {
     public class ResponseRepository
     {
-        public ResponseContext context { get; set; }
+        public ResponseContext Context { get; set; }
 
         public ResponseRepository(ResponseContext context)
         {
-            this.context = context;
+            this.Context = context;
+        }
+        public List<Response> FetchAll()
+        {
+            return Context.responses.ToList();
+        }
+
+        public void AddResponse(Response newResponse)
+        {
+            Context.responses.Add(newResponse);
+            Context.SaveChanges();
+
+        }
+        public void ClearAll()
+        {
+            Context.responses.RemoveRange(Context.responses);
+            Context.SaveChanges();
         }
     }
 }

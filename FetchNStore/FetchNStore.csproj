@@ -180,14 +180,15 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ResponseController.cs" />
     <Compile Include="DAL\ResponseContext.cs" />
     <Compile Include="DAL\ResponseRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201610250133282_InitialCreate.cs" />
-    <Compile Include="Migrations\201610250133282_InitialCreate.Designer.cs">
-      <DependentUpon>201610250133282_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201610250206255_InitialCreate.cs" />
+    <Compile Include="Migrations\201610250206255_InitialCreate.Designer.cs">
+      <DependentUpon>201610250206255_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -271,8 +272,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201610250133282_InitialCreate.resx">
-      <DependentUpon>201610250133282_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610250206255_InitialCreate.resx">
+      <DependentUpon>201610250206255_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
