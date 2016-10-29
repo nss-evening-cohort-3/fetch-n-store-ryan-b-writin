@@ -16,8 +16,10 @@
                 <input type="text" class="form-control" id="urlinput" placeholder="Enter url" ng-model="url">
             </div>
             <div class="col-xs-1">
-                <button class="btn" id="fetchbtn" ng-click="MakeRequest()">Fetch</button>
-                <button class="btn" id="storebtn" ng-click="ApiGet()">Store</button>
+                <button class="btn" id="fetchbtn" ng-click="MakeRequest()">Fetch New Response</button>
+                <button class="btn" id="storebtn" ng-click="Store()">Store Last Response</button>
+                <button class="btn" id="viewbtn" ng-click="ShowAll()">View Stored Responses</button>
+                <button class="btn" id="clearbtn" ng-click="Clear()">Clear All Responses</button>
             </div>
         </div>
     </form>

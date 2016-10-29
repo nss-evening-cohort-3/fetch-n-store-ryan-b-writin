@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FetchNStore.DAL;
+using FetchNStore.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,10 +11,11 @@ namespace FetchNStore.Controllers
 {
     public class ResponseController : ApiController
     {
+        ResponseRepository repo = new ResponseRepository();
         // GET api/<controller>
-        public IEnumerable<string> Get()
+        public IEnumerable<Response> Get()
         {
-            return new string[] { "value1", "value2" };
+            return repo.FetchAll();
         }
 
         // GET api/<controller>/5
@@ -22,19 +25,29 @@ namespace FetchNStore.Controllers
         }
 
         // POST api/<controller>
-        public string Post([FromBody]dynamic value)
+        public void Post([FromBody]dynamic newResponse)
         {
-            return value.name.Value;
-        }
+            DateTime SentDate = newResponse.sendDate.Value;
+            string UrlToStore = newResponse.url.Value;
+            string MethodToStore = newResponse.method.Value;
+            int CodeAsInt = (int)newResponse.code.Value;
+            int TimeAsInt = (int)newResponse.responseTime.Value;
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
+            Response ResponseToSave = new Response
+            {
+                URL = UrlToStore,
+                Method = MethodToStore,
+                Code = CodeAsInt,
+                ResponseTime = TimeAsInt,
+                SendDate = SentDate
+            };
+            repo.AddResponse(ResponseToSave);
         }
 
         // DELETE api/<controller>/5
-        public void Delete(int id)
+        public void Delete()
         {
+            repo.ClearAll();
         }
     }
 }

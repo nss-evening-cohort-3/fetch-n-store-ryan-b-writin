@@ -14,6 +14,10 @@ namespace FetchNStore.DAL
         {
             this.Context = context;
         }
+        public ResponseRepository()
+        {
+            this.Context = new ResponseContext();
+        }
         public List<Response> FetchAll()
         {
             return Context.responses.ToList();

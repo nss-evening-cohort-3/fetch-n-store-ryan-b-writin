@@ -3,7 +3,7 @@
 app.controller("AppCtrl", function ($scope, $http) {
 
     $scope.name = function () {
-        //$http.get('/api/Response');
+        $http.get('/api/Response');
     }
 
 });
